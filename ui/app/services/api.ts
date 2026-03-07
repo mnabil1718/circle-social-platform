@@ -10,6 +10,7 @@ export const api = axios.create({
 
 api.interceptors.request.use(
     (config) => {
+        console.log(`[API] ${config.method?.toUpperCase()} ${config.baseURL}${config.url}`);
         const token = store.getState().auth.user?.token;
         if (token) {
             config.headers.Authorization = `Bearer ${token}`
