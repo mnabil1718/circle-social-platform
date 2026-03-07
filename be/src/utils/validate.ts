@@ -9,7 +9,7 @@ export function formatZodErrorsAsObject(error: ZodError): Record<string, string>
         const field = issue.path.join('.');
         let msg = issue.message;
         if (msg.includes(":")) {
-            msg = msg.split(":")[1].replace(/"/g, "").trim();
+            msg = msg.split(":")[1]?.replace(/"/g, "").trim() ?? "unknown error";
         }
         acc[field] = msg;
         return acc;
