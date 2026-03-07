@@ -14,7 +14,7 @@ export function createApp() {
     const app = express();
 
     app.use("/api/v1/docs", swaggerRoute);
-
+    console.log("Static path:", path.join(__dirname, "public"));
     app.use(
         "/static",
         express.static(path.join(__dirname, "public"))
