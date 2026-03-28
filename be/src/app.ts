@@ -7,6 +7,7 @@ import swaggerRoute from "./lib/swagger/swagger.js";
 import { errorHandler } from "./middlewares/error.js";
 import { corsMiddleware } from "./middlewares/cors.js";
 import { limiterMiddleware } from "./middlewares/rate-limit.js";
+import { config } from "./utils/config.js";
 
 const __dirname = new URL(".", import.meta.url).pathname;
 
@@ -15,7 +16,11 @@ export function createApp() {
 
     app.use("/api/v1/docs", swaggerRoute);
 
-    app.use("/static", express.static(path.join(__dirname, "public")));
+    if (config.environment === "development") {
+        app.use("/static", express.static(path.join(__dirname, "public")));
+    } else {
+        app.use("/static", express.static("/app/src/public"));
+    }
 
     app.use(cookieParser());
     app.use(corsMiddleware);
