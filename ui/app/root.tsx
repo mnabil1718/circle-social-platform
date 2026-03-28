@@ -60,7 +60,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-    console.log("Vite Env Check:", import.meta.env);
     return (
         // Place auth watcher inside toaster provider
         // to be able to navigate and show toast message
