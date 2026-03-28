@@ -1,3 +1,4 @@
 import { config } from "../utils/config.js";
 
-export const STATIC_UPLOAD_PREFIX = `${config.host}/static/uploads/`;
+const port = config.environment === "development" ? `:${config.port}` : ""
+export const STATIC_UPLOAD_PREFIX = `${config.host}${port}/static/uploads/`;

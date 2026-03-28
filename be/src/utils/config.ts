@@ -1,6 +1,7 @@
 import "dotenv/config";
 
 export const config = {
+    environment: process.env.NODE_ENV ?? "development",
     port: process.env.PORT ?? 8080,
     host: process.env.HOST ?? "http://localhost:8080", // for upload prefix url
     frontend_url: process.env.FRONTEND_URL ?? "http://localhost:5173",
